@@ -1,6 +1,9 @@
 konfig-yaml
 ===========
 
+[![NPM Version][npm-image]][npm-url]
+[![Build Status](https://travis-ci.org/tilfin/konfig-yaml.svg?branch=master)](https://travis-ci.org/tilfin/konfig-yaml)
+
 Loader yaml base configuration for each run enviroments.
 
 - Expand environment variables (ex. `users-#{NODE_ENV}`)
