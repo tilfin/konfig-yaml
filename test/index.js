@@ -98,4 +98,43 @@ describe('konfig', () => {
     });
   });
 
+  context('loading config/cachetest.yml', () => {
+    it('read configuration', () => {
+      process.env.BRAND = 'awesome';
+
+      const config = konfig('cachetest', { path: path.join(__dirname, 'config') });
+
+      expect(config.name).to.equal('awesome');
+    });
+
+    it('read configuration using cache default', () => {
+      process.env.BRAND = '';
+
+      const config = konfig('cachetest', {
+          path: path.join(__dirname, 'config')
+        });
+
+      expect(config.name).to.equal('awesome');
+    });
+
+    it('read configuration with useCache=true', () => {
+      process.env.BRAND = 'another';
+
+      const config = konfig('cachetest', {
+          path: path.join(__dirname, 'config'),
+          useCache: true
+        });
+
+      expect(config.name).to.equal('awesome');
+    });
+
+    it('read configuration with useCache=false', () => {
+      const config = konfig('cachetest', {
+          path: path.join(__dirname, 'config'),
+          useCache: false
+        });
+
+      expect(config.name).to.equal('another');
+    });
+  });
 });

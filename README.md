@@ -27,7 +27,7 @@ config = konfig(<name>, [opts]);
 * `opts`
   * `path` config directory path resolved from the process current one ( default `config` )
   * `env` Run environment ( default *NODE_ENV* or `development` )
-
+  * `useCache` whether using cache ( default `true` )
 
 ## Example
 
