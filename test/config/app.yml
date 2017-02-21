@@ -1,0 +1,39 @@
+default:
+  port: 8080
+  logger:
+    stdout: info
+  resource:
+    some_table: prefix-#{BRAND}-#{NODE_ENV}
+    user_table: users-#{NODE_ENV}
+
+development: &development
+  logger:
+    file: info
+    stdout: debug
+
+  endpoint:
+    api: http://dev.example.com/api
+  dev:
+    foo: 'Foo'
+
+test:
+  <<: *development
+  logger:
+    file: debug
+    stdout: debug
+  endpoint:
+    api: http://test.example.com/api
+  test_resources:
+    - one
+    - 2
+  resource:
+    user_table: no-table
+
+production:
+  logger:
+    file: error
+  endpoint:
+    api: http://www.example.com/api
+  resource:
+    user_table: #{NODE_ENV}-users
+    book_table: #{BRAND}-books
