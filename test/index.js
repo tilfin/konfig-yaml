@@ -14,7 +14,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'development';
       process.env.BRAND = 'awesome';
 
-      const config = konfig(null, { dir: path.join(__dirname, 'config') });
+      const config = konfig(null, { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.equal(8080);
       expect(config.logger.file).to.equal('info');
@@ -32,7 +32,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'test';
       process.env.BRAND = 'ok';
 
-      const config = konfig(null, { dir: path.join(__dirname, 'config') });
+      const config = konfig(null, { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.equal(8080);
       expect(config.logger.file).to.equal('debug');
@@ -54,7 +54,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'production';
       delete process.env.BRAND;
 
-      const config = konfig(null, { dir: path.join(__dirname, 'config') });
+      const config = konfig(null, { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.equal(8080);
       expect(config.logger.file).to.equal('error');
@@ -71,7 +71,7 @@ describe('konfig', () => {
     it('read configuration for NODE_ENV=integration rightly', () => {
       process.env.NODE_ENV = 'integration';
 
-      const config = konfig('another', { dir: path.join(__dirname, 'config') });
+      const config = konfig('another', { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.equal(10080);
     });
@@ -79,7 +79,7 @@ describe('konfig', () => {
     it('read configuration for NODE_ENV=unknown rightly', () => {
       process.env.NODE_ENV = 'unknown';
 
-      const config = konfig('another', { dir: path.join(__dirname, 'config') });
+      const config = konfig('another', { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.be.undefined;
     });

@@ -23,10 +23,10 @@ $ npm i konfig-yaml
 config = konfig(<name>, [opts]);
 ```
 
-* `name` specifys the name of `config/<name>.yml`, default `app`
+* `name` specifys the name of `config/<name>.yml` ( default `app` )
 * `opts`
-  * `path` config dir path, default `config`
-  * `env` Run environment, default *NODE_ENV* or `development`
+  * `path` config directory path resolved from the process current one ( default `config` )
+  * `env` Run environment ( default *NODE_ENV* or `development` )
 
 
 ## Example
