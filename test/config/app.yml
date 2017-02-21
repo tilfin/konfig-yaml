@@ -3,14 +3,16 @@ default:
   logger:
     stdout: info
   resource:
-    some_table: prefix-#{BRAND}-#{NODE_ENV}
-    user_table: users-#{NODE_ENV}
+    some_table: prefix-${BRAND}-${NODE_ENV}
+    user_table: users-${NODE_ENV}
 
 development: &development
   logger:
     file: info
     stdout: debug
-
+  user_names:
+    - ken
+    - taro
   endpoint:
     api: http://dev.example.com/api
   dev:
@@ -21,6 +23,8 @@ test:
   logger:
     file: debug
     stdout: debug
+  user_names:
+    - hanako
   endpoint:
     api: http://test.example.com/api
   test_resources:
@@ -35,5 +39,5 @@ production:
   endpoint:
     api: http://www.example.com/api
   resource:
-    user_table: #{NODE_ENV}-users
-    book_table: #{BRAND}-books
+    user_table: ${NODE_ENV}-users
+    book_table: ${BRAND}-books

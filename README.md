@@ -4,9 +4,9 @@ konfig-yaml
 [![NPM Version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/tilfin/konfig-yaml.svg?branch=master)](https://travis-ci.org/tilfin/konfig-yaml)
 
-Loader yaml base configuration for each run enviroments.
+The loader of yaml base configuration for each run enviroments.
 
-- Expand environment variables (ex. `users-#{NODE_ENV}`)
+- Expand environment variables (ex. `users-${NODE_ENV}`)
 - Deep merge the environment settings and default settings (except array items)
 
 
@@ -41,7 +41,7 @@ default:
   logger:
     level: info
   db:
-    name: app-#{NODE_ENV}
+    name: ${BRAND}-app-${NODE_ENV}
     user: user
     pass: pass
 
@@ -63,6 +63,7 @@ console.log(config.port);
 console.log(config.logger.level);
 console.log(config.db.user);
 console.log(config.db.name);
+console.log(config.db.password);
 ```
 
 ### Run
@@ -70,10 +71,10 @@ console.log(config.db.name);
 #### In development
 
 ```
-$ node main.js
+$ NODE_ENV=development BRAND=normal node main.js
 8080
 info
-app-development
+normal-app-development
 user
 pass
 ```
@@ -81,10 +82,10 @@ pass
 #### In production
 
 ```
-$ NODE_ENV=production node main.js
+$ NODE_ENV=production BRAND=awesome node main.js
 1080
 error
-app-production
+awesome-app-production
 user
 Password
 ```
@@ -92,4 +93,7 @@ Password
 
 ## License
 
-MIT
+  [MIT](LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/konfig-yaml.svg
+[npm-url]: https://npmjs.org/package/konfig-yaml

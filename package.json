@@ -1,6 +1,6 @@
 {
   "name": "konfig-yaml",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Loader for yaml base configuration with ENVs",
   "main": "./lib/index.js",
   "scripts": {

@@ -20,6 +20,9 @@ describe('konfig', () => {
       expect(config.logger.file).to.equal('info');
       expect(config.logger.stdout).to.equal('debug');
       expect(config.endpoint.api).to.equal('http://dev.example.com/api');
+      expect(config.user_names.length).to.equal(2);
+      expect(config.user_names[0]).to.equal('ken');
+      expect(config.user_names[1]).to.equal('taro');
       expect(config.resource.some_table).to.equal('prefix-awesome-development');
       expect(config.resource.user_table).to.equal('users-development');
       expect(config.dev.foo).to.equal('Foo');
@@ -38,6 +41,11 @@ describe('konfig', () => {
       expect(config.resource.some_table).to.equal('prefix-ok-test');
       expect(config.resource.user_table).to.equal('no-table');
       expect(config.dev.foo).to.equal('Foo');
+
+      // Replace array items
+      expect(config.user_names.length).to.equal(1);
+      expect(config.user_names[0]).to.equal('hanako');
+
       expect(config.test_resources[0]).to.equal('one');
       expect(config.test_resources[1]).to.equal(2);
     });
