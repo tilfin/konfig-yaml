@@ -20,9 +20,15 @@ describe('konfig', () => {
       expect(config.logger.file).to.equal('info');
       expect(config.logger.stdout).to.equal('debug');
       expect(config.endpoint.api).to.equal('http://dev.example.com/api');
+
+      // Override array items
+      expect(config.levels.length).to.equal(2);
+      expect(config.levels[0]).to.equal('info');
+      expect(config.levels[1]).to.equal('error');
       expect(config.user_names.length).to.equal(2);
       expect(config.user_names[0]).to.equal('ken');
       expect(config.user_names[1]).to.equal('taro');
+
       expect(config.resource.some_table).to.equal('prefix-awesome-development');
       expect(config.resource.user_table).to.equal('users-development');
       expect(config.dev.foo).to.equal('Foo');
@@ -42,7 +48,9 @@ describe('konfig', () => {
       expect(config.resource.user_table).to.equal('no-table');
       expect(config.dev.foo).to.equal('Foo');
 
-      // Replace array items
+      // Override array items
+      expect(config.levels.length).to.equal(1);
+      expect(config.levels[0]).to.equal('debug');
       expect(config.user_names.length).to.equal(1);
       expect(config.user_names[0]).to.equal('hanako');
 
@@ -64,6 +72,11 @@ describe('konfig', () => {
       expect(config.resource.user_table).to.equal('production-users');
       expect(config.resource.book_table).to.equal('-books');
       expect(config.dev).to.be.undefined;
+
+      // Default array items
+      expect(config.levels.length).to.equal(2);
+      expect(config.levels[0]).to.equal('trace');
+      expect(config.levels[1]).to.equal('info');
     });
   });
 

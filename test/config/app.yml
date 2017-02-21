@@ -2,6 +2,9 @@ default:
   port: 8080
   logger:
     stdout: info
+  levels:
+    - trace
+    - info
   resource:
     some_table: prefix-${BRAND}-${NODE_ENV}
     user_table: users-${NODE_ENV}
@@ -10,6 +13,9 @@ development: &development
   logger:
     file: info
     stdout: debug
+  levels:
+    - info
+    - error
   user_names:
     - ken
     - taro
@@ -23,6 +29,8 @@ test:
   logger:
     file: debug
     stdout: debug
+  levels:
+    - debug
   user_names:
     - hanako
   endpoint:
