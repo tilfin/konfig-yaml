@@ -4,7 +4,7 @@
   "description": "Loader for yaml base configuration with ENVs",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "mocha --recursive test/"
+    "test": "cd test; NODE_ENV=test mocha index.js"
   },
   "repository": {
     "type": "git",

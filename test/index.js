@@ -14,7 +14,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'development';
       process.env.BRAND = 'awesome';
 
-      const config = konfig(null, { path: path.join(__dirname, 'config') });
+      const config = konfig();
 
       expect(config.port).to.equal(8080);
       expect(config.logger.file).to.equal('info');
@@ -38,7 +38,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'test';
       process.env.BRAND = 'ok';
 
-      const config = konfig(null, { path: path.join(__dirname, 'config') });
+      const config = konfig(null);
 
       expect(config.port).to.equal(8080);
       expect(config.logger.file).to.equal('debug');
@@ -62,6 +62,7 @@ describe('konfig', () => {
       process.env.NODE_ENV = 'production';
       delete process.env.BRAND;
 
+      // name is default app, path is absolute.
       const config = konfig(null, { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.equal(8080);
@@ -84,7 +85,8 @@ describe('konfig', () => {
     it('read configuration for NODE_ENV=integration rightly', () => {
       process.env.NODE_ENV = 'integration';
 
-      const config = konfig('another', { path: path.join(__dirname, 'config') });
+      // path is default config.
+      const config = konfig('another');
 
       expect(config.port).to.equal(10080);
     });
@@ -92,6 +94,7 @@ describe('konfig', () => {
     it('read configuration for NODE_ENV=unknown rightly', () => {
       process.env.NODE_ENV = 'unknown';
 
+      // path is absolute.
       const config = konfig('another', { path: path.join(__dirname, 'config') });
 
       expect(config.port).to.be.undefined;
@@ -102,7 +105,7 @@ describe('konfig', () => {
     it('read configuration', () => {
       process.env.BRAND = 'awesome';
 
-      const config = konfig('cachetest', { path: path.join(__dirname, 'config') });
+      const config = konfig('cachetest');
 
       expect(config.name).to.equal('awesome');
     });
@@ -110,9 +113,7 @@ describe('konfig', () => {
     it('read configuration using cache default', () => {
       process.env.BRAND = '';
 
-      const config = konfig('cachetest', {
-          path: path.join(__dirname, 'config')
-        });
+      const config = konfig('cachetest');
 
       expect(config.name).to.equal('awesome');
     });
@@ -120,21 +121,27 @@ describe('konfig', () => {
     it('read configuration with useCache=true', () => {
       process.env.BRAND = 'another';
 
-      const config = konfig('cachetest', {
-          path: path.join(__dirname, 'config'),
-          useCache: true
-        });
+      const config = konfig('cachetest', { useCache: true });
 
       expect(config.name).to.equal('awesome');
     });
 
     it('read configuration with useCache=false', () => {
-      const config = konfig('cachetest', {
-          path: path.join(__dirname, 'config'),
-          useCache: false
-        });
+      const config = konfig('cachetest', { useCache: false });
 
       expect(config.name).to.equal('another');
+    });
+  });
+
+  context('loading setting/app.yaml', () => {
+    it('read configuration with path', () => {
+      const config = konfig(null, { path: 'setting' });
+      expect(config.foo).to.equal('aaa');
+    });
+
+    it('read configuration with path and env', () => {
+      const config = konfig(null, { path: 'setting', env: 'test2' });
+      expect(config.foo).to.equal('bbb');
     });
   });
 });
