@@ -20,14 +20,23 @@ $ npm i konfig-yaml
 ## How to Use
 
 ```
+const konfig = require('konfig-yaml');
+
 config = konfig(<name>, [opts]);
 ```
 
 * `name` specifys the name of `config/<name>.yml` ( default `app` )
 * `opts`
   * `path` config directory path resolved from the process current one ( default `config` )
-  * `env` Run environment ( default *NODE_ENV* or `development` )
+  * `env` Run environment ( default **NODE_ENV** value or `development` )
   * `useCache` whether using cache ( default `true` )
+
+#### Clear cache
+
+```
+konfig.clear();
+```
+
 
 ## Example
 

@@ -3,7 +3,6 @@
 const path = require('path');
 const chai = require('chai');
 const expect = chai.expect;
-const konfig = require('../lib');
 
 
 describe('konfig', () => {
