@@ -4,11 +4,11 @@ konfig-yaml
 [![NPM Version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/tilfin/konfig-yaml.svg?branch=master)](https://travis-ci.org/tilfin/konfig-yaml)
 
-The loader of yaml base configuration for each run enviroments.
+The loader of yaml base configuration for each run enviroments like [settingslogic](https://github.com/binarylogic/settingslogic).
 
 - Expand environment variables (ex. `users-${NODE_ENV}`)
 - Deep merge the environment settings and default settings (except array items)
-
+- Node.js 4.3 or later
 
 ## Install
 
