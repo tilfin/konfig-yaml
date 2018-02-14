@@ -3,6 +3,8 @@ konfig-yaml
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/tilfin/konfig-yaml.svg?branch=master)](https://travis-ci.org/tilfin/konfig-yaml)
+[![Code Climate](https://codeclimate.com/github/tilfin/konfig-yaml/badges/gpa.svg)](https://codeclimate.com/github/tilfin/konfig-yaml)
+[![Test Coverage](https://codeclimate.com/github/tilfin/konfig-yaml/badges/coverage.svg)](https://codeclimate.com/github/tilfin/konfig-yaml/coverage)
 
 The loader of yaml base configuration for each run enviroments like [settingslogic](https://github.com/settingslogic/settingslogic).
 
