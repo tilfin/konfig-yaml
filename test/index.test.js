@@ -31,11 +31,16 @@ describe('konfig', () => {
       expect(config.resource.some_table).to.equal('prefix-awesome-development');
       expect(config.resource.user_table).to.equal('users-development');
       expect(config.dev.foo).to.equal('Foo');
+
+      expect(config.db.user).to.equal('user');
+      expect(config.db.pass).to.equal('password');
     });
 
     it('read configuration for NODE_ENV=test rightly', () => {
       process.env.NODE_ENV = 'test';
       process.env.BRAND = 'ok';
+      process.env.DATABASE_USER = 'myUser';
+      process.env.DATABASE_PASSWORD = 'PassworD';
 
       const config = konfig(null);
 
@@ -55,6 +60,9 @@ describe('konfig', () => {
 
       expect(config.test_resources[0]).to.equal('one');
       expect(config.test_resources[1]).to.equal(2);
+
+      expect(config.db.user).to.equal('myUser');
+      expect(config.db.pass).to.equal('PassworD');
     });
 
     it('read configuration for NODE_ENV=production rightly', () => {
