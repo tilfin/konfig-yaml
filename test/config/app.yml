@@ -8,6 +8,9 @@ default:
   resource:
     some_table: prefix-${BRAND}-${NODE_ENV}
     user_table: users-${NODE_ENV}
+  db:
+    user: ${DATABASE_USER:user}
+    pass: ${DATABASE_PASSWORD:-password}
 
 development: &development
   logger:

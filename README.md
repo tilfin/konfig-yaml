@@ -7,6 +7,8 @@ konfig-yaml
 The loader of yaml base configuration for each run enviroments like [settingslogic](https://github.com/settingslogic/settingslogic).
 
 - Expand environment variables (ex. `users-${NODE_ENV}`)
+    - If an environment variable is not set, it is to be emtpy string.
+    - If `${DB_USER:-user}` or `${DB_USER:user}` is defined, `user` is expanded unless DB_USER does not exists.
 - Deep merge the environment settings and default settings (except array items)
 - Node.js 4.3 or later
 

@@ -1,7 +1,7 @@
 {
   "name": "konfig-yaml",
-  "version": "0.9.0",
-  "description": "Loader for yaml base configuration with ENVs",
+  "version": "0.9.1",
+  "description": "Loader for YAML configuration with ENVs",
   "main": "./lib/index.js",
   "scripts": {
     "test": "cd test; NODE_ENV=test mocha *.test.js"
