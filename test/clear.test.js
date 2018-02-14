@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 
 describe('konfig', () => {
-  const konfig = require('../lib/');
+  const konfig = require('../');
 
   describe('#clear', () => {
     context('loading config/cleartest.yaml', () => {

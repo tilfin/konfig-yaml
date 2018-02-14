@@ -4,9 +4,10 @@ const path = require('path');
 const chai = require('chai');
 const expect = chai.expect;
 
+process.chdir('test')
 
 describe('konfig', () => {
-  const konfig = require('../lib/');
+  const konfig = require('../');
 
   context('loading config/app.yml', () => {
     it('read configuration for NODE_ENV=development rightly', () => {
