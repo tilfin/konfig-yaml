@@ -32,7 +32,7 @@ config = konfig(<name>, [opts]);
 
 * `name` specifys the name of `config/<name>.yml` ( default `app` )
 * `opts`
-  * `path` config directory path resolved from the process current one ( default `config` )
+  * `path` config directory path resolved from the process current one ( default **NODE_CONFIG_DIR** value or `config` )
   * `env` Run environment ( default **NODE_ENV** value or `development` )
   * `useCache` whether using cache ( default `true` )
 
