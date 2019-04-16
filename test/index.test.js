@@ -151,5 +151,19 @@ describe('konfig', () => {
       const config = konfig(null, { path: 'setting', env: 'test2' });
       expect(config.foo).to.equal('bbb');
     });
+
+    it('read configuration with NODE_CONFIG_DIR', () => {
+      process.env.NODE_CONFIG_DIR = './setting';
+      const config = konfig();
+      expect(config.foo).to.equal('aaa');
+      process.env.NODE_CONFIG_DIR = undefined;
+    });
+
+    it('read configuration with path and NODE_CONFIG_DIR', () => {
+      process.env.NODE_CONFIG_DIR = './config';
+      const config = konfig(null, { path: 'setting' });
+      expect(config.foo).to.equal('aaa');
+      process.env.NODE_CONFIG_DIR = undefined;
+    });
   });
 });
