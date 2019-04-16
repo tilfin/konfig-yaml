@@ -12,7 +12,7 @@ The loader of yaml base configuration for each run enviroments like [settingslog
     - If an environment variable is not set, it is to be emtpy string.
     - If `${DB_USER:-user}` or `${DB_USER:user}` is defined, `user` is expanded unless DB_USER does not exists.
 - Deep merge the environment settings and default settings (except array items)
-- Node.js 4.3 or later
+- Node.js 6.10 or later
 - The [gem library](https://github.com/tilfin/konfig-yaml-rb) also exists for Ruby.
 
 ## Install
