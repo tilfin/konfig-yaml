@@ -1,8 +1,9 @@
 {
   "name": "konfig-yaml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Loader for YAML configuration with ENVs",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "mocha test/**/*.test.js",
     "coverage": "nyc npm test"
