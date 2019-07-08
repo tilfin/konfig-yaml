@@ -18,13 +18,13 @@
   "author": "Toshimitsu Takahashi",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.2.0",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^6.1.3"
+    "mocha": "^6.1.4"
   },
   "dependencies": {
-    "deepmerge": "^1.3.2",
-    "js-yaml": "^3.8.1"
+    "deepmerge": "^3.3.0",
+    "js-yaml": "^3.13.1"
   },
   "engine": {
     "node": ">= 6.10.0"
